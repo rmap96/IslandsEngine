@@ -2,10 +2,12 @@ defmodule IslandsInterfaceWeb.UserSocket do
   use Phoenix.Socket
 
   ## Channels
+  # We want any messages with a topic that begins with "game:" to go through the GameChannel
+  channel("game:*", IslandsInterfaceWeb.GameChannel)
   # channel "room:*", IslandsInterfaceWeb.RoomChannel
 
   ## Transports
-  transport :websocket, Phoenix.Transports.WebSocket
+  transport(:websocket, Phoenix.Transports.WebSocket)
   # transport :longpoll, Phoenix.Transports.LongPoll
 
   # Socket params are passed from the client and can
